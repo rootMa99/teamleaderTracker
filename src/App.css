@@ -20,6 +20,14 @@
   background-color: #f84018;
 }
 
+.teamLeaders {
+  margin-top: 5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
 @media (height >= 700px) {
   .App {
     height: 94vh;
