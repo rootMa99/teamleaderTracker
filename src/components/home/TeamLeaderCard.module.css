@@ -1,0 +1,19 @@
+
+
+
+.container{
+    width: 70vw;
+    height: 6rem;
+    border: 1px solid #f84018;
+    margin: auto;
+}
+.imgContainer{
+    width: 30%;
+    height: 100%;
+    background-color: aquamarine;
+}
+.dataContainer{
+    width: 70%;
+    height: 100%;
+    background-color: bisque;
+}
