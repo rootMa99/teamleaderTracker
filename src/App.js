@@ -9,6 +9,12 @@ function App() {
       <div className="teamLeaders">
         <TeamLeaderCard inver={true} />
         <TeamLeaderCard />
+        <TeamLeaderCard inver={true} />
+        <TeamLeaderCard />
+        <TeamLeaderCard inver={true} />
+        <TeamLeaderCard />
+        <TeamLeaderCard inver={true} />
+        <TeamLeaderCard />
       </div>
     </div>
   );
