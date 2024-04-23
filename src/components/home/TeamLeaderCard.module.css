@@ -49,8 +49,9 @@
   border-radius: 30px;
   overflow: hidden;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
+  gap: 1.5rem;
 }
 .dataContainer {
   margin-left: 10%;
