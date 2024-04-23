@@ -30,6 +30,7 @@
   border-radius: 50%;
   position: absolute;
   border: 3px solid #383942;
+  background-color: #383942;
   box-shadow: 0px 0px 25px 5px rgba(8, 8, 8, 0.788);
 }
 .imgContainer {
@@ -47,6 +48,9 @@
   animation: fadeIn 1s ease-in forwards;
   border-radius: 30px;
   overflow: hidden;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 .dataContainer {
   margin-left: 10%;
