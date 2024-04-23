@@ -74,3 +74,24 @@
       opacity: 1;
     }
   }
+  .ty{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+  }
+  .ty h3{
+    color: #f84018;
+    text-transform: uppercase;
+  }
+  .ind{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+    /* border-right: 1px solid #f84018; */
+  }
+  .ind span{
+    font-weight: bold;
+    text-transform: uppercase;
+  }

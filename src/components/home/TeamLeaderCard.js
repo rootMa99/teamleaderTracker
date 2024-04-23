@@ -17,39 +17,20 @@ const TeamLeaderCard = (p) => {
       <div className={p.inver ? c.dataContainer : c.dataContainerinver}>
         <div className={c.ty}>
           <h3>efficiency</h3>
-          <p>
-            <span>actual:</span> 86%
-          </p>
-          <p>
-            <span>target:</span> 91%
-          </p>
-          <p>
-            <span>gap:</span> -5%
-          </p>
-        </div>
-        <div className={c.ty}>
-          <h3>head count</h3>
-          <p>
-            <span>actual:</span> 33
-          </p>
-          <p>
-            <span>target:</span> 30
-          </p>
-          <p>
-            <span>gap:</span> -3 
-          </p>
-        </div>
-        <div className={c.ty}>
-          <h3>output</h3>
-          <p>
-            <span>actual:</span> 88
-          </p>
-          <p>
-            <span>target:</span> 88
-          </p>
-          <p>
-            <span>gap:</span>  88
-          </p>
+          <div className={c.data}>
+            <div className={c.ind}>
+              <span>actual:</span>
+              <p>86%</p>
+            </div>
+            <div className={c.ind}>
+              <span>target:</span>
+              <p>91%</p>
+            </div>
+            <div className={c.ind}>
+              <span>gap:</span>
+              <p>-5%</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
