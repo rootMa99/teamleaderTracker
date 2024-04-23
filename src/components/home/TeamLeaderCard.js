@@ -50,7 +50,7 @@ const TeamLeaderCard = (p) => {
           </div>
         </div>
         <div className={c.ty}>
-          <h3>output</h3>
+          <h3>output:</h3>
           <div className={c.data}>
             <div className={c.ind}>
               <span>actual:</span>
