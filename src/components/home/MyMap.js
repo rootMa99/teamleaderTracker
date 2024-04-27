@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css'; // Import Leaflet CSS
 
 const MyMap = () => {
   const [location, setLocation] = useState(null);
@@ -28,14 +29,21 @@ const MyMap = () => {
   }, []);
 
   return (
-    <MapContainer center={[51.505, -0.09]} zoom={13} style={{ height: '400px', width: '100%' }}>
-      <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-      {location && (
-        <Marker position={location}>
-          <Popup>You are here</Popup>
-        </Marker>
-      )}
-    </MapContainer>
+    <div style={{ height: 'calc(100vh - 60px)', width: '100%' }}> {/* Adjust height based on your layout */}
+      <MapContainer
+        center={location ? [location.lat, location.lng] : [51.505, -0.09]} // Use user's location or default to London
+        zoom={13}
+        style={{ height: '100%', width: '100%' }}
+      >
+        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        {location && (
+          <Marker position={[location.lat, location.lng]}>
+            <Popup>You are here</Popup>
+          </Marker>
+        )}
+      </MapContainer>
+      {error && <p>Error: {error}</p>}
+    </div>
   );
 };
 
