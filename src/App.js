@@ -21,7 +21,7 @@ function App() {
     <div className="App">
       <NavBar />
       <div style={{ height: "30rem", backgroundColor: "#634747" }}>
-      <h1>Please drop file here</h1>
+        <h1>Please drop file here</h1>
         <Chart data={data} />
       </div>
       <div style={{ height: "30rem", backgroundColor: "#3d7558" }}>
@@ -29,6 +29,19 @@ function App() {
       </div>
       <div style={{ height: "30rem", backgroundColor: "#3d7558" }}>
         <MyDropzone />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 100 100"
+          width="200"
+          height="200"
+        >
+          <path
+            d="M 20,20 Q 50,0 80,20 L 70,70 Q 50,50 30,70 Z"
+            fill="none"
+            stroke="black"
+            strokeWidth="4"
+          />
+        </svg>
       </div>
     </div>
   );
