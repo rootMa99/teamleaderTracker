@@ -27,6 +27,7 @@ function App() {
         <StackedBarChart data={dataf} />
       </div>
       <div style={{ height: "30rem", backgroundColor: "#3d7558" }}>
+        <h1>Please drop file here</h1>
         <MyDropzone />
       </div>
     </div>
