@@ -1,6 +1,8 @@
+import { useEffect, useState } from "react";
 import "./App.css";
 import Chart from "./components/home/Chart";
 import GatLocation from "./components/home/GatLocation.js";
+import GeoLocationComponent from "./components/home/GeoLocationComponent.js";
 import MyComponent from "./components/home/MyComponent.js";
 import MyDropzone from "./components/home/MyDropzone.js";
 import MyMap from "./components/home/MyMap.js";
@@ -21,6 +23,30 @@ function App() {
     { label: "BC", series1: 11, series2: 35, series3: 25 },
     { label: "BD", series1: 17, series2: 5, series3: 3 },
   ];
+  const [location, setLocation] = useState(null);
+  const [error, setError] = useState(null);
+  const getLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setLocation({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          });
+        },
+        (error) => {
+          setError(error.message);
+        }
+      );
+    } else {
+      setError("Geolocation is not supported by your browser.");
+    }
+  };
+
+  useEffect(() => {
+    getLocation();
+  }, []);
+
   return (
     <div className="App">
       <NavBar />
@@ -48,9 +74,10 @@ function App() {
         </svg>
         <MyComponent />
         <GatLocation />
+        <GeoLocationComponent />
       </div>
       <div style={{ height: "30rem", backgroundColor: "#3d7558" }}>
-       <MyMap />
+       <MyMap location={location} error={error}/>
       </div>
     </div>
   );
