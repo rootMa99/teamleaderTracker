@@ -26,16 +26,9 @@ function App() {
       <div style={{ height: "30rem", backgroundColor: "#3d7558" }}>
         <StackedBarChart data={dataf} />
       </div>
-      <MyDropzone onDrop={(acceptedFiles) => console.log(acceptedFiles)}>
-        {({ getRootProps, getInputProps }) => (
-          <section>
-            <div {...getRootProps()}>
-              <input {...getInputProps()} />
-              <p>Drag 'n' drop some files here, or click to select files</p>
-            </div>
-          </section>
-        )}
-      </MyDropzone>
+      <div>
+        <MyDropzone />
+      </div>
     </div>
   );
 }
