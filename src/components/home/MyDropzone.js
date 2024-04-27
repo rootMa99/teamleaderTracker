@@ -1,8 +1,18 @@
 import React, { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 
+
+const dropzoneStyles = {
+    border: '2px dashed #eee',
+    borderRadius: '4px',
+    padding: '20px',
+    textAlign: 'center',
+    cursor: 'pointer',
+    marginBottom: '20px',
+  };
+
 function MyDropzone() {
-    
+
   const onDrop = useCallback(acceptedFiles => {
     // Do something with the files
     console.log(acceptedFiles);
@@ -22,13 +32,6 @@ function MyDropzone() {
   );
 }
 
-const dropzoneStyles = {
-  border: '2px dashed #eee',
-  borderRadius: '4px',
-  padding: '20px',
-  textAlign: 'center',
-  cursor: 'pointer',
-  marginBottom: '20px',
-};
+
 
 export default MyDropzone;

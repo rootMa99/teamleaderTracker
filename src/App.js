@@ -1,6 +1,6 @@
 import "./App.css";
 import Chart from "./components/home/Chart";
-import MyDropzone from "./components/home/MyDropzone";
+import MyDropzone from "./components/home/MyDropzone.js";
 import StackedBarChart from "./components/home/StackedBarChart";
 import NavBar from "./components/ui/NavBar";
 
@@ -26,7 +26,7 @@ function App() {
       <div style={{ height: "30rem", backgroundColor: "#3d7558" }}>
         <StackedBarChart data={dataf} />
       </div>
-      <div>
+      <div style={{ height: "30rem", backgroundColor: "#3d7558" }}>
         <MyDropzone />
       </div>
     </div>
