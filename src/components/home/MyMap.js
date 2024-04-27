@@ -9,8 +9,8 @@ const MyMap = ({location, error}) => {
       {location ? (
         <MapContainer
           center={[location.lat, location.lng]} 
-          zoom={100} 
-          style={{ height: "100%", width: "80%", margin:"auto" }}
+          zoom={20} 
+          style={{ height: "90%", width: "80%", margin:"auto" }}
         >
         {console.log("you see me", location.lat, location.lng)}
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
