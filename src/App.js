@@ -1,5 +1,6 @@
 import "./App.css";
 import Chart from "./components/home/Chart";
+import MyComponent from "./components/home/MyComponent.js";
 import MyDropzone from "./components/home/MyDropzone.js";
 import StackedBarChart from "./components/home/StackedBarChart";
 import NavBar from "./components/ui/NavBar";
@@ -42,6 +43,7 @@ function App() {
             strokeWidth="4"
           />
         </svg>
+        <MyComponent />
       </div>
     </div>
   );
