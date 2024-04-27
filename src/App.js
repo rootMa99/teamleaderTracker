@@ -21,13 +21,13 @@ function App() {
     <div className="App">
       <NavBar />
       <div style={{ height: "30rem", backgroundColor: "#634747" }}>
+      <h1>Please drop file here</h1>
         <Chart data={data} />
       </div>
       <div style={{ height: "30rem", backgroundColor: "#3d7558" }}>
         <StackedBarChart data={dataf} />
       </div>
       <div style={{ height: "30rem", backgroundColor: "#3d7558" }}>
-        <h1>Please drop file here</h1>
         <MyDropzone />
       </div>
     </div>
