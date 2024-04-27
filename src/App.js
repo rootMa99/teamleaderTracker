@@ -47,6 +47,8 @@ function App() {
         </svg>
         <MyComponent />
         <GatLocation />
+      </div>
+      <div style={{ height: "30rem", backgroundColor: "#3d7558" }}>
         <MyMap />
       </div>
     </div>
