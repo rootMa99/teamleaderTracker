@@ -3,6 +3,7 @@ import Chart from "./components/home/Chart";
 import GatLocation from "./components/home/GatLocation.js";
 import MyComponent from "./components/home/MyComponent.js";
 import MyDropzone from "./components/home/MyDropzone.js";
+import MyMap from "./components/home/MyMap.js";
 import StackedBarChart from "./components/home/StackedBarChart";
 import NavBar from "./components/ui/NavBar";
 
@@ -46,6 +47,7 @@ function App() {
         </svg>
         <MyComponent />
         <GatLocation />
+        <MyMap />
       </div>
     </div>
   );
