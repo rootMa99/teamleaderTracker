@@ -9,6 +9,7 @@ import MyMap from "./components/home/MyMap.js";
 // import MyMap from "./components/home/MyMap.js";
 import StackedBarChart from "./components/home/StackedBarChart";
 import NavBar from "./components/ui/NavBar";
+import MyMapT from "./components/home/MyMapT.js";
 
 function App() {
   const data = [
@@ -66,6 +67,9 @@ function App() {
       <div style={{ height: "30rem", backgroundColor: "#3d7558" }}>
        <MyMap location={location} error={error}/>
       </div>
+      <div style={{ height: "30rem", backgroundColor: "#3d7558" }}>
+        <MyMapT />
+     </div>
     </div>
   );
 }
