@@ -14,6 +14,39 @@ const targetIcon = L.icon({
 
 const MyMap = ({ location, error }) => {
   const [selectedPosition, setSelectedPosition] = useState(null);
+  const [distance, setDistance] = useState(null);
+
+  useEffect(() => {
+    if (location && selectedPosition) {
+      // Calculate distance between current location and selected position
+      const distanceInKm = calculateDistance(location, selectedPosition);
+      setDistance(distanceInKm);
+    }
+  }, [location, selectedPosition]);
+
+  // Function to calculate distance between two points using Haversine formula
+  const calculateDistance = (point1, point2) => {
+    const R = 6371; // Radius of the Earth in km
+    const lat1 = point1.lat;
+    const lon1 = point1.lng;
+    const lat2 = point2.lat;
+    const lon2 = point2.lng;
+
+    const dLat = deg2rad(lat2 - lat1);
+    const dLon = deg2rad(lon2 - lon1);
+
+    const a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const d = R * c; // Distance in km
+    return d;
+  };
+
+  // Function to convert degrees to radians
+  const deg2rad = (deg) => {
+    return deg * (Math.PI / 180);
+  };
 
   return (
     <div style={{ height: '100%', width: '100%' }}>
@@ -26,7 +59,7 @@ const MyMap = ({ location, error }) => {
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
           {/* Render marker for the user's location */}
           <Marker position={[location.lat, location.lng]} icon={targetIcon}>
-            <Popup>You are here</Popup>
+            <Popup>Your current position</Popup>
           </Marker>
           {/* Render marker and polyline for the selected position */}
           {selectedPosition && (
@@ -35,11 +68,8 @@ const MyMap = ({ location, error }) => {
                 <Popup>Selected position</Popup>
               </Marker>
               <Polyline
-                positions={[
-                  [location.lat, location.lng], // Start position (user's location)
-                  [selectedPosition.lat, selectedPosition.lng] // End position (selected position)
-                ]}
-                color="blue" // Color of the polyline
+                positions={[[location.lat, location.lng], [selectedPosition.lat, selectedPosition.lng]]}
+                color="blue"
               />
             </div>
           )}
@@ -49,6 +79,8 @@ const MyMap = ({ location, error }) => {
       ) : (
         <h1>Waiting...</h1>
       )}
+      {/* Display distance if available */}
+      {distance && <p>Distance: {distance.toFixed(2)} km</p>}
       {/* Display error message if any */}
       {error && <p>Error: {error}</p>}
     </div>
