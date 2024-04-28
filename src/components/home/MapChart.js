@@ -51,8 +51,8 @@ const MapChart = () => {
   }, [tooltipContent]);
 
   return (
-    <div className="map-container">
-      <svg ref={svgRef}></svg>
+    <div className="map-container" >
+      <svg ref={svgRef} style={{ height: "100%", width:"100%" }}></svg>
       <div id="tooltip">{tooltipContent}</div>
     </div>
   );

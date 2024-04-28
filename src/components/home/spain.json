@@ -1,0 +1,24 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Spain"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [-10, 44],
+              [4, 44],
+              [4, 36],
+              [-10, 36],
+              [-10, 44]
+            ]
+          ]
+        }
+      }
+    ]
+  }
+  
