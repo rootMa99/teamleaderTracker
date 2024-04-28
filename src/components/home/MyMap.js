@@ -1,22 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import { MapContainer, TileLayer, Marker, Popup, useMapEvents, Polyline } from 'react-leaflet';
-import L from 'leaflet'; 
-import 'leaflet/dist/leaflet.css';
-import locationp from "../../assets/location.png"
-
+import React, { useState, useEffect } from "react";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  useMapEvents,
+  Polyline,
+} from "react-leaflet";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
+import locationp from "../../assets/location.png";
 
 const targetIcon = L.icon({
   iconUrl: locationp,
   iconSize: [41, 41],
   iconAnchor: [Math.floor(25 / 2), 41],
-  popupAnchor: [0, -41] 
+  popupAnchor: [0, -41],
 });
 
 const MyMap = ({ location, error }) => {
   const [selectedPosition, setSelectedPosition] = useState(null);
   const [distance, setDistance] = useState(null);
   const calculateDistance = (point1, point2) => {
-    const R = 6371; 
+    const R = 6371;
     const lat1 = point1.lat;
     const lon1 = point1.lng;
     const lat2 = point2.lat;
@@ -27,9 +33,12 @@ const MyMap = ({ location, error }) => {
 
     const a =
       Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-      Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+      Math.cos(deg2rad(lat1)) *
+        Math.cos(deg2rad(lat2)) *
+        Math.sin(dLon / 2) *
+        Math.sin(dLon / 2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    const d = R * c; 
+    const d = R * c;
     return d;
   };
 
@@ -40,21 +49,17 @@ const MyMap = ({ location, error }) => {
     }
   }, [location, selectedPosition]);
 
-
- 
-
-  
   const deg2rad = (deg) => {
     return deg * (Math.PI / 180);
   };
 
   return (
-    <div style={{ height: '100%', width: '100%' }}>
+    <div style={{ height: "100%", width: "100%" }}>
       {location ? (
         <MapContainer
           center={[location.lat, location.lng]}
-          zoom={20} 
-          style={{ height: '90%', width: '80%', margin: 'auto' }}
+          zoom={20}
+          style={{ height: "90%", width: "80%", margin: "auto" }}
         >
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
           <Marker position={[location.lat, location.lng]} icon={targetIcon}>
@@ -62,11 +67,17 @@ const MyMap = ({ location, error }) => {
           </Marker>
           {selectedPosition && (
             <div>
-              <Marker position={[selectedPosition.lat, selectedPosition.lng]} icon={targetIcon}>
+              <Marker
+                position={[selectedPosition.lat, selectedPosition.lng]}
+                icon={targetIcon}
+              >
                 <Popup>Selected position</Popup>
               </Marker>
               <Polyline
-                positions={[[location.lat, location.lng], [selectedPosition.lat, selectedPosition.lng]]}
+                positions={[
+                  [location.lat, location.lng],
+                  [selectedPosition.lat, selectedPosition.lng],
+                ]}
                 color="blue"
               />
             </div>
@@ -82,13 +93,12 @@ const MyMap = ({ location, error }) => {
   );
 };
 
-
 const MapClickHandler = ({ setSelectedPosition }) => {
   const map = useMapEvents({
     click: (event) => {
       setSelectedPosition({
         lat: event.latlng.lat,
-        lng: event.latlng.lng
+        lng: event.latlng.lng,
       });
     },
   });
