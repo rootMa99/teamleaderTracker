@@ -8,8 +8,8 @@ const MyMap = ({location, error}) => {
   
   const customIcon = L.icon({
     iconUrl: locationp, 
-    iconSize: [25, 41], 
-    iconAnchor: [12, 41], 
+    iconSize: [41, 41], 
+    iconAnchor: [Math.floor(25 / 2), 41], 
     popupAnchor: [0, -41] 
   });
 

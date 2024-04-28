@@ -59,19 +59,6 @@ function App() {
       </div>
       <div style={{ height: "30rem", backgroundColor: "#3d7558" }}>
         <MyDropzone />
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 100 100"
-          width="200"
-          height="200"
-        >
-          <path
-            d="M 20,20 Q 50,0 80,20 L 70,70 Q 50,50 30,70 Z"
-            fill="none"
-            stroke="black"
-            strokeWidth="4"
-          />
-        </svg>
         <MyComponent />
         <GatLocation />
         <GeoLocationComponent />
