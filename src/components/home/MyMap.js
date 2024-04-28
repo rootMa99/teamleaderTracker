@@ -21,6 +21,7 @@ const targetIcon = L.icon({
 const MyMap = ({ location, error }) => {
   const [selectedPosition, setSelectedPosition] = useState(null);
   const [distance, setDistance] = useState(null);
+  
   const calculateDistance = (point1, point2) => {
     const R = 6371;
     const lat1 = point1.lat;
