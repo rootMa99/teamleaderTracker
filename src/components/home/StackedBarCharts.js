@@ -37,18 +37,20 @@ const colors = [
 ];
 
 const StackedBarCharts = ({ data }) => {
+  // Extract unique crew names
+  const crewNames = Array.from(new Set(data.flatMap(m => m.crews.map(c => c.crew))));
+
   const chartData = {
-    labels: data.map((m) => m.month),
-    datasets: data.flatMap((m, monthIndex) =>
-      m.crews.map((crew, crewIndex) => ({
-        label: `${m.month} - ${crew.crew}`,
-        data: data.map((monthData) => crew.ratio),
-        backgroundColor: colors[crewIndex % colors.length],
-      }))
-    ),
+    labels: data.map(m => m.month),
+    datasets: crewNames.map((crew, index) => ({
+      label: crew,
+      data: data.map(monthData => {
+        const crewData = monthData.crews.find(c => c.crew === crew);
+        return crewData ? crewData.ratio : 0;
+      }),
+      backgroundColor: colors[index % colors.length],
+    })),
   };
-
-
 
   const options = {
     responsive: true,
@@ -91,7 +93,7 @@ const StackedBarCharts = ({ data }) => {
           weight: "bold",
           size: 12,
         },
-        formatter: (value) => value.toFixed(0),
+        formatter: value => value.toFixed(0),
         anchor: "end",
         align: "start",
       },
