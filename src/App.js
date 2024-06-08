@@ -11,6 +11,7 @@ import StackedBarChart from "./components/home/StackedBarChart";
 import NavBar from "./components/ui/NavBar";
 import MapChart from "./components/home/MapChart.js";
 import StackedBarCharts from "./components/home/StackedBarCharts.js";
+import StbarChartD3 from "./components/home/StbarChartD3.js";
 
 
 //datasets: data.flatMap((m, monthIndex) =>
@@ -155,6 +156,9 @@ function App() {
      </div>
      <div style={{ height: "30rem", backgroundColor: "#3d7558" }}>
         <StackedBarCharts data={stackedD} />
+     </div>
+     <div style={{ height: "30rem", backgroundColor: "#3d7558" }}>
+        <StbarChartD3 data={stackedD} />
      </div>
     </div>
   );
