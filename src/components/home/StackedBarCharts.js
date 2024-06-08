@@ -39,10 +39,10 @@ const colors = [
 const StackedBarCharts = ({ data }) => {
   const chartData = {
     labels: data.map((m) => m.month),
-    datasets: data.flatMap((m, monthIndex) =>
+    datasets: data.flatMap((m) =>
       m.crews.map((crew, crewIndex) => ({
         label: `${m.month} - ${crew.crew}`,
-        data: data.map((monthData) => crew.ratio),
+        data: data.map(() => crew.ratio),
         backgroundColor: colors[crewIndex % colors.length],
       }))
     ),
