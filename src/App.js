@@ -12,6 +12,15 @@ import NavBar from "./components/ui/NavBar";
 import MapChart from "./components/home/MapChart.js";
 import StackedBarCharts from "./components/home/StackedBarCharts.js";
 
+
+//datasets: data.flatMap((m, monthIndex) =>
+//     m.crews.map((crew, crewIndex) => ({
+//       label: `${m.month} - ${crew.crew}`,
+//       data: data.map((monthData) => crew.ratio),
+//       backgroundColor: colors[crewIndex % colors.length],
+//     }))
+//   ),
+
 function App() {
   const data = [
     { label: "A", value: 10 },
