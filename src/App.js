@@ -74,10 +74,10 @@ function App() {
     {
       month:"02",
       crews:[
-        {crew:"k1", ratio:2879},
-        {crew:"k2", ratio:3889},
-        {crew:"k3", ratio:4856},
-        {crew:"k4", ratio:5856},
+        {crew:"k1", ratio:28790},
+        {crew:"k2", ratio:38890},
+        {crew:"k3", ratio:48560},
+        {crew:"k4", ratio:58560},
         {crew:"k5", ratio:6570},
         {crew:"k6", ratio:2879},
         {crew:"kÈ", ratio:7879},
