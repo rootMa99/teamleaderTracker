@@ -42,17 +42,17 @@ const getCrewColor = (crewName, index) => {
 };
 
 const StackedBarCharts = ({ data }) => {
-  const allCrews = Array.from(new Set(data.flatMap(monthData => monthData.crews.map(crew => crew.crew))));
+  const allCrews = Array.from(new Set(data.flatMap(monthData => monthData.families.map(family => family.family))));
 
   const chartData = {
     labels: data.map((m) => m.month),
-    datasets: allCrews.map((crew, crewIndex) => ({
-      label: crew,
+    datasets: allCrews.map((family, crewIndex) => ({
+      label: family,
       data: data.map((monthData) => {
-        const crewData = monthData.crews.find(c => c.crew === crew);
+        const crewData = monthData.families.find(c => c.family === family);
         return crewData ? crewData.ratio : 0;
       }),
-      backgroundColor: getCrewColor(crew, crewIndex),
+      backgroundColor: getCrewColor(family, crewIndex),
     })),
   };
 

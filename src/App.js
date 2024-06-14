@@ -35,65 +35,398 @@ function App() {
     { label: "BC", series1: 11, series2: 35, series3: 25 },
     { label: "BD", series1: 17, series2: 5, series3: 3 },
   ];
-  const stackedD=[
+
+  const stackedD= [
     {
-      month:"01",
-      crews:[
-        {crew:"k1", ratio:2879},
-        {crew:"k2", ratio:3889},
-        {crew:"k3", ratio:4856},
-        {crew:"k4", ratio:5856},
-        {crew:"k5", ratio:6570},
-        {crew:"k6", ratio:2879},
-        {crew:"kÈ", ratio:7879},
-        {crew:"k1s", ratio:6845},
-        {crew:"ksd", ratio:2879},
-        {crew:"kzz", ratio:5879},
-        {crew:"kee", ratio:9879},
-        {crew:"kèç", ratio:6879},
-        {crew:"ké&", ratio:5879},
-        {crew:"kvb", ratio:8879},
-        {crew:"k89", ratio:2879},
-        {crew:"k88", ratio:1879},
-        {crew:"k77", ratio:879},
-        {crew:"k4G", ratio:8879},
-        {crew:"k2", ratio:1879},
-        {crew:"k1UI", ratio:3879},
-        {crew:"k88", ratio:8979},
-        {crew:"k00", ratio:2379},
-        {crew:"kNK", ratio:9079},
-        {crew:"k221", ratio:6679},
-        {crew:"kYU", ratio:7779},
-        {crew:"kNK", ratio:4479},
-        {crew:"k1PO", ratio:1179},
-        {crew:"k1NJS8", ratio:3379},
-        {crew:"k1NJ9", ratio:7279},
-        {crew:"k1NN", ratio:1389},
-        {crew:"k22aa", ratio:58797},
-      ]
+      "families": [
+        {
+          "family": "Project",
+          "ratio": 0,
+          "target": 46585.81163434903
+        },
+        {
+          "family": "Habitacle",
+          "ratio": 86354.96183206106,
+          "target": 197000
+        },
+        {
+          "family": "Principale",
+          "ratio": 204731.57415832573,
+          "target": 210685
+        },
+        {
+          "family": "PDB",
+          "ratio": 33915.72456320658,
+          "target": 68462
+        },
+        {
+          "family": "P.AVG",
+          "ratio": 0,
+          "target": 5100
+        },
+        {
+          "family": "P.AVD",
+          "ratio": 0,
+          "target": 5100
+        },
+        {
+          "family": "PLC",
+          "ratio": 0,
+          "target": 350
+        },
+        {
+          "family": "Porte_Battante",
+          "ratio": 0,
+          "target": 700
+        },
+        {
+          "family": "Console",
+          "ratio": 0,
+          "target": 300
+        },
+        {
+          "family": "Sous_caisse",
+          "ratio": 0,
+          "target": 1700
+        },
+        {
+          "family": "Parchoc_Avant",
+          "ratio": 0,
+          "target": 850
+        },
+        {
+          "family": "Parchoc_Arriere",
+          "ratio": 0,
+          "target": 1550
+        },
+        {
+          "family": "Pavillon",
+          "ratio": 615.7635467980296,
+          "target": 2900
+        },
+        {
+          "family": "Jauge_carburant",
+          "ratio": 0,
+          "target": 200
+        },
+        {
+          "family": "Auvent",
+          "ratio": 0,
+          "target": 50
+        },
+        {
+          "family": "Airbag",
+          "ratio": 0,
+          "target": 40
+        },
+        {
+          "family": "Lave_vitre",
+          "ratio": 0,
+          "target": 0
+        },
+        {
+          "family": "Sous_caisse_Ecars",
+          "ratio": 0,
+          "target": 40
+        },
+        {
+          "family": "Attache_remorque",
+          "ratio": 0,
+          "target": 740
+        },
+        {
+          "family": "3FJE",
+          "ratio": 0,
+          "target": 40
+        },
+        {
+          "family": "Portes_AV",
+          "ratio": 0,
+          "target": 1400
+        },
+        {
+          "family": "Portes_AR",
+          "ratio": 0,
+          "target": 1400
+        },
+        {
+          "family": "PC_AVG",
+          "ratio": 0,
+          "target": 700
+        },
+        {
+          "family": "PC_AVD",
+          "ratio": 0,
+          "target": 700
+        },
+        {
+          "family": "Volet",
+          "ratio": 8376.963350785341,
+          "target": 1400
+        },
+        {
+          "family": "CHC",
+          "ratio": 429.1108822519739,
+          "target": 700
+        },
+        {
+          "family": "ATN8",
+          "ratio": 0,
+          "target": 700
+        },
+        {
+          "family": "ATN8-T9",
+          "ratio": 0,
+          "target": 700
+        },
+        {
+          "family": "Con_BVA",
+          "ratio": 0,
+          "target": 700
+        },
+        {
+          "family": "Con_BVM",
+          "ratio": 0,
+          "target": 700
+        },
+        {
+          "family": "Lave_Vitre",
+          "ratio": 0,
+          "target": 700
+        },
+        {
+          "family": "ARTIV",
+          "ratio": 0,
+          "target": 700
+        },
+        {
+          "family": "Essuie_Vitre",
+          "ratio": 0,
+          "target": 700
+        },
+        {
+          "family": "Tweeter",
+          "ratio": 0,
+          "target": 700
+        },
+        {
+          "family": "Escamo",
+          "ratio": 0,
+          "target": 700
+        },
+        {
+          "family": "STTA",
+          "ratio": 0,
+          "target": 800
+        },
+        {
+          "family": "CBEB",
+          "ratio": 0,
+          "target": 100
+        },
+        {
+          "family": "Emetteur",
+          "ratio": 0,
+          "target": 100
+        }
+      ],
+      "month": "January"
     },
     {
-      month:"02",
-      crews:[
-        {crew:"k1", ratio:28790},
-        {crew:"k2", ratio:38890},
-        {crew:"k3", ratio:48560},
-        {crew:"k4", ratio:58560},
-        {crew:"k5", ratio:6570},
-        {crew:"k6", ratio:2879},
-        {crew:"kÈ", ratio:7879},
-        {crew:"k1s", ratio:6845},
-        {crew:"ksd", ratio:2879},
-        {crew:"kzz", ratio:5879},
-        {crew:"kee", ratio:9879},
-        {crew:"kèç", ratio:6879},
-        {crew:"ké&", ratio:5879},
-        {crew:"ké&aa", ratio:58797},
-        {crew:"k22aa", ratio:58797},
-     
-      ]
-    },
-    
+      "families": [
+        {
+          "family": "Project",
+          "ratio": 0,
+          "target": 45885.368421052626
+        },
+        {
+          "family": "Habitacle",
+          "ratio": 175700.93457943926,
+          "target": 189000
+        },
+        {
+          "family": "Principale",
+          "ratio": 385065.8857979502,
+          "target": 205150
+        },
+        {
+          "family": "PDB",
+          "ratio": 61705.98911070781,
+          "target": 73462
+        },
+        {
+          "family": "P.AVG",
+          "ratio": 0,
+          "target": 4845
+        },
+        {
+          "family": "P.AVD",
+          "ratio": 0,
+          "target": 4845
+        },
+        {
+          "family": "PLC",
+          "ratio": 0,
+          "target": 333
+        },
+        {
+          "family": "Porte_Battante",
+          "ratio": 0,
+          "target": 665
+        },
+        {
+          "family": "Console",
+          "ratio": 0,
+          "target": 285
+        },
+        {
+          "family": "Sous_caisse",
+          "ratio": 0,
+          "target": 1545
+        },
+        {
+          "family": "Parchoc_Avant",
+          "ratio": 0,
+          "target": 773
+        },
+        {
+          "family": "Parchoc_Arriere",
+          "ratio": 0,
+          "target": 1403
+        },
+        {
+          "family": "Pavillon",
+          "ratio": 0,
+          "target": 2685
+        },
+        {
+          "family": "Jauge_carburant",
+          "ratio": 0,
+          "target": 190
+        },
+        {
+          "family": "Auvent",
+          "ratio": 0,
+          "target": 48
+        },
+        {
+          "family": "Airbag",
+          "ratio": 0,
+          "target": 38
+        },
+        {
+          "family": "Lave_vitre",
+          "ratio": 0,
+          "target": 0
+        },
+        {
+          "family": "Sous_caisse_Ecars",
+          "ratio": 0,
+          "target": 38
+        },
+        {
+          "family": "Attache_remorque",
+          "ratio": 0,
+          "target": 668
+        },
+        {
+          "family": "3FJE",
+          "ratio": 0,
+          "target": 38
+        },
+        {
+          "family": "Portes_AV",
+          "ratio": 0,
+          "target": 1260
+        },
+        {
+          "family": "Portes_AR",
+          "ratio": 0,
+          "target": 1260
+        },
+        {
+          "family": "PC_AVG",
+          "ratio": 0,
+          "target": 630
+        },
+        {
+          "family": "PC_AVD",
+          "ratio": 0,
+          "target": 630
+        },
+        {
+          "family": "Volet",
+          "ratio": 13440.860215053764,
+          "target": 1260
+        },
+        {
+          "family": "CHC",
+          "ratio": 0,
+          "target": 630
+        },
+        {
+          "family": "ATN8",
+          "ratio": 0,
+          "target": 630
+        },
+        {
+          "family": "ATN8-T9",
+          "ratio": 0,
+          "target": 630
+        },
+        {
+          "family": "Con_BVA",
+          "ratio": 0,
+          "target": 630
+        },
+        {
+          "family": "Con_BVM",
+          "ratio": 0,
+          "target": 630
+        },
+        {
+          "family": "Lave_Vitre",
+          "ratio": 0,
+          "target": 630
+        },
+        {
+          "family": "ARTIV",
+          "ratio": 0,
+          "target": 630
+        },
+        {
+          "family": "Essuie_Vitre",
+          "ratio": 0,
+          "target": 630
+        },
+        {
+          "family": "Tweeter",
+          "ratio": 0,
+          "target": 630
+        },
+        {
+          "family": "Escamo",
+          "ratio": 0,
+          "target": 630
+        },
+        {
+          "family": "STTA",
+          "ratio": 0,
+          "target": 730
+        },
+        {
+          "family": "CBEB",
+          "ratio": 0,
+          "target": 100
+        },
+        {
+          "family": "Emetteur",
+          "ratio": 0,
+          "target": 100
+        }
+      ],
+      "month": "February"
+    }
   ]
   const [location, setLocation] = useState(null);
   const [error, setError] = useState(null);
@@ -144,11 +477,13 @@ function App() {
      <div style={{ height: "30rem", backgroundColor: "#3d7558" }}>
         <StackedBarCharts data={stackedD} />
      </div>
-     <div style={{ height: "30rem", backgroundColor: "#3d7558" }}>
-        <StbarChartD3 data={stackedD} />
-     </div>
+     
     </div>
   );
 }
 
 export default App;
+
+// <div style={{ height: "30rem", backgroundColor: "#3d7558" }}>
+//         <StbarChartD3 data={stackedD} />
+//      </div>
