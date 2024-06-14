@@ -1,5 +1,5 @@
 import React from "react";
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, LineElement, Title, Tooltip, Legend, PointElement, LineController, BarController } from "chart.js";
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, LineElement, PointElement, Title, Tooltip, Legend, LineController, BarController } from "chart.js";
 import { Bar } from "react-chartjs-2";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 
@@ -49,18 +49,22 @@ const StackedBarCharts = ({ data }) => {
       return crewData ? crewData.ratio : 0;
     }),
     backgroundColor: getCrewColor(family, crewIndex),
+    order: 1
   }));
 
   const lineDatasets = allCrews.map((family, crewIndex) => ({
     type: 'line',
-    label: `${family} Line`,
+    label: `${family} Target`,
     data: data.map((monthData) => {
       const crewData = monthData.families.find(c => c.family === family);
-      return crewData ? crewData.ratio : 0;
+      return crewData ? crewData.target : 0;
     }),
     borderColor: getCrewColor(family, crewIndex),
+    borderWidth: 2,
+    pointBackgroundColor: getCrewColor(family, crewIndex),
     fill: false,
     tension: 0.4,
+    order: 2
   }));
 
   const chartData = {
@@ -87,7 +91,6 @@ const StackedBarCharts = ({ data }) => {
           color: "#f3f3f34f",
         },
         ticks: {
-          display: typeof data.home === "undefined" ? false : true,
           color: "white",
           font: {
             weight: "bold",
@@ -111,8 +114,8 @@ const StackedBarCharts = ({ data }) => {
         },
         formatter: (value) =>
           value !== undefined && value !== null ? value.toFixed(0) : "0",
-        anchor: "start",
-        align: "end",
+        anchor: "end",
+        align: "top",
       },
     },
   };
