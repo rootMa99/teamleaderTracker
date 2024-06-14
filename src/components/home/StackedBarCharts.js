@@ -12,21 +12,43 @@ import {
 import { Line } from "react-chartjs-2";
 
 const StackedBarCharts = ({ data }) => {
-  const extarctData = (d) => {
+  // Function to extract data and assign colors based on month
+  const extractData = (d) => {
+    const colors = {}; // Object to store colors for each month
     const rd = [];
     d.forEach((e) => {
-      e.families.map((m) =>
+      e.families.forEach((m) => {
+        const label = `${e.month}-${m.family}`;
         rd.push({
-          label: ` ${e.month}-${m.family}`,
+          label: label,
           ratio: m.ratio,
           target: m.target,
-        })
-      );
+        });
+        const month = e.month;
+        // Generate color for the month if not already generated
+        if (!colors[month]) {
+          colors[month] = getRandomColor(); // Function to get a random color
+        }
+      });
     });
-    return rd;
+    return { data: rd, colors: colors };
   };
-  const db = extarctData(data);
+
+  // Function to generate random color
+  const getRandomColor = () => {
+    const letters = "0123456789ABCDEF";
+    let color = "#";
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  };
+
+  const { data: db, colors } = extractData(data);
   console.log(db);
+  console.log(colors);
+
+  // Constructing data for chart
   const datac = {
     labels: db.map((m) => m.label),
     datasets: [
@@ -49,15 +71,19 @@ const StackedBarCharts = ({ data }) => {
       },
       {
         type: "bar",
-        label: "p.title",
+        label: "Ratio",
         data: db.map((m) => m.ratio.toFixed(0)),
-        backgroundColor: "#b7d1cf",
+        backgroundColor: db.map((m) => {
+          const month = m.label.split('-')[0]; // Extract month from label
+          return colors[month];
+        }),
         hoverBackgroundColor: "#929D96",
         borderColor: "black",
         borderWidth: 1,
       },
     ],
   };
+
   const options = {
     responsive: true,
     maintainAspectRatio: false,
@@ -77,9 +103,7 @@ const StackedBarCharts = ({ data }) => {
           color: "white",
           fontWeight: "bold",
         },
-        y: {
-          stacked: true,
-        },
+        stacked: true,
       },
     },
     plugins: {
@@ -105,7 +129,6 @@ const StackedBarCharts = ({ data }) => {
         chart.data.datasets.forEach((dataset, index) => {
           const meta = chart.getDatasetMeta(index);
           meta.data.forEach((element, index) => {
-            // const data = `${dataset.data[index]}%`;
             const data = `${dataset.data[index]}`;
             let xPos, yPos;
             if (dataset.type === "bar") {
@@ -126,6 +149,7 @@ const StackedBarCharts = ({ data }) => {
       },
     },
   };
+
   ChartJS.register(
     LineElement,
     CategoryScale,
@@ -135,6 +159,7 @@ const StackedBarCharts = ({ data }) => {
     Legend,
     BarElement
   );
+
   return <Line data={datac} options={options} />;
 };
 
