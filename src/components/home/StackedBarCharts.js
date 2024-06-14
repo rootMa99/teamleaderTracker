@@ -111,7 +111,12 @@ const StackedBarCharts = ({ data }) => {
         labels: {
           color: "#FAF0E6",
         },
-        display: false,
+        display: true,
+        position: 'bottom', // Position of the legend
+        onClick: null, // Disable legend click event
+        onHover: null, // Disable legend hover effect
+        onLeave: null, // Disable legend leave effect
+        onResize: null, // Disable legend resize event
       },
       datalabels: {
         display: true,
