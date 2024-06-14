@@ -43,28 +43,30 @@ const StackedBarCharts = ({ data }) => {
 
   const chartData = {
     labels: data.map((m) => m.month),
-    datasets: [
-      ...allCrews.map((family, crewIndex) => ({
-        type: 'bar',
-        label: family,
-        data: data.map((monthData) => {
-          const crewData = monthData.families.find(c => c.family === family);
-          return crewData ? crewData.ratio : 0;
-        }),
-        backgroundColor: getCrewColor(family, crewIndex),
-      })),
-      ...allCrews.map((family, crewIndex) => ({
-        type: 'line',
-        label: `${family} Line`,
-        data: data.map((monthData) => {
-          const crewData = monthData.families.find(c => c.family === family);
-          return crewData ? crewData.ratio : 0;
-        }),
-        borderColor: getCrewColor(family, crewIndex),
-        fill: false,
-        tension: 0.4,
-      }))
-    ]
+    datasets: allCrews.map((family, crewIndex) => ({
+      type: 'bar',
+      label: family,
+      data: data.map((monthData) => {
+        const crewData = monthData.families.find(c => c.family === family);
+        return crewData ? crewData.ratio : 0;
+      }),
+      backgroundColor: getCrewColor(family, crewIndex),
+      borderColor: getCrewColor(family, crewIndex),
+      fill: false,
+      tension: 0.4,
+      datalabels: {
+        display: true,
+        color: "#FFFAD7",
+        font: {
+          weight: "bold",
+          size: 12,
+        },
+        formatter: (value) =>
+          value !== undefined && value !== null ? value.toFixed(0) : "0",
+        anchor: "start",
+        align: "end",
+      }
+    }))
   };
 
   const options = {
