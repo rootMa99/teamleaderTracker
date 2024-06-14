@@ -1,20 +1,16 @@
 import React from "react";
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, LineElement, Title, Tooltip, Legend, PointElement, LineController, BarController } from "chart.js";
 import { Bar } from "react-chartjs-2";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 
 ChartJS.register(
   CategoryScale,
   LinearScale,
   BarElement,
+  LineElement,
+  PointElement,
+  LineController,
+  BarController,
   Title,
   Tooltip,
   Legend,
@@ -32,6 +28,7 @@ const colors = [
   "#A04000", "#6E2C00", "#196F3D", "#145A32", "#0B5345", "#641E16",
   "#512E5F", "#154360", "#1A5276", "#7D6608", "#6E2C00"
 ];
+
 const crewColorMap = {};
 
 const getCrewColor = (crewName, index) => {
@@ -46,14 +43,28 @@ const StackedBarCharts = ({ data }) => {
 
   const chartData = {
     labels: data.map((m) => m.month),
-    datasets: allCrews.map((family, crewIndex) => ({
-      label: family,
-      data: data.map((monthData) => {
-        const crewData = monthData.families.find(c => c.family === family);
-        return crewData ? crewData.ratio : 0;
-      }),
-      backgroundColor: getCrewColor(family, crewIndex),
-    })),
+    datasets: [
+      ...allCrews.map((family, crewIndex) => ({
+        type: 'bar',
+        label: family,
+        data: data.map((monthData) => {
+          const crewData = monthData.families.find(c => c.family === family);
+          return crewData ? crewData.ratio : 0;
+        }),
+        backgroundColor: getCrewColor(family, crewIndex),
+      })),
+      ...allCrews.map((family, crewIndex) => ({
+        type: 'line',
+        label: `${family} Line`,
+        data: data.map((monthData) => {
+          const crewData = monthData.families.find(c => c.family === family);
+          return crewData ? crewData.ratio : 0;
+        }),
+        borderColor: getCrewColor(family, crewIndex),
+        fill: false,
+        tension: 0.4,
+      }))
+    ]
   };
 
   const options = {
