@@ -51,21 +51,23 @@ const StackedBarCharts = ({ data }) => {
     backgroundColor: getCrewColor(family, crewIndex),
   }));
 
-  const lineDatasets = allCrews.map((family, crewIndex) => ({
+  // Calculate total ratio for each month for the line chart
+  const totalRatios = data.map(monthData => 
+    monthData.families.reduce((sum, family) => sum + (family.ratio || 0), 0)
+  );
+
+  const lineDataset = {
     type: 'line',
-    label: `${family} Line`,
-    data: data.map((monthData) => {
-      const crewData = monthData.families.find(c => c.family === family);
-      return crewData ? crewData.ratio : 0;
-    }),
-    borderColor: getCrewColor(family, crewIndex),
+    label: 'Total Ratio',
+    data: totalRatios,
+    borderColor: '#FF0000',
     fill: false,
     tension: 0.4,
-  }));
+  };
 
   const chartData = {
     labels: data.map((m) => m.month),
-    datasets: [...barDatasets, ...lineDatasets]
+    datasets: [...barDatasets, lineDataset]
   };
 
   const options = {
