@@ -14,13 +14,6 @@ import StackedBarCharts from "./components/home/StackedBarCharts.js";
 // import StbarChartD3 from "./components/home/StbarChartD3.js";
 
 
-//datasets: data.flatMap((m, monthIndex) =>
-//     m.crews.map((crew, crewIndex) => ({
-//       label: `${m.month} - ${crew.crew}`,
-//       data: data.map((monthData) => crew.ratio),
-//       backgroundColor: colors[crewIndex % colors.length],
-//     }))
-//   ),
 
 function App() {
   const data = [
