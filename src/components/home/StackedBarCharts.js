@@ -1,6 +1,6 @@
 import React from "react";
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, LineElement, PointElement, Title, Tooltip, Legend, LineController, BarController } from "chart.js";
-import { Bar } from "react-chartjs-2";
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, LineElement, Title, Tooltip, Legend } from "chart.js";
+import { Chart } from "react-chartjs-2";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 
 ChartJS.register(
@@ -8,9 +8,6 @@ ChartJS.register(
   LinearScale,
   BarElement,
   LineElement,
-  PointElement,
-  LineController,
-  BarController,
   Title,
   Tooltip,
   Legend,
@@ -41,35 +38,38 @@ const getCrewColor = (crewName, index) => {
 const StackedBarCharts = ({ data }) => {
   const allCrews = Array.from(new Set(data.flatMap(monthData => monthData.families.map(family => family.family))));
 
-  const barDatasets = allCrews.map((family, crewIndex) => ({
-    type: 'bar',
+  const datasets = allCrews.map((family, crewIndex) => ({
     label: family,
     data: data.map((monthData) => {
       const crewData = monthData.families.find(c => c.family === family);
       return crewData ? crewData.ratio : 0;
     }),
     backgroundColor: getCrewColor(family, crewIndex),
-    order: 1
+    yAxisID: 'y',
+    type: 'bar',
+    order: 2,
   }));
 
-  const lineDatasets = allCrews.map((family, crewIndex) => ({
-    type: 'line',
-    label: `${family} Target`,
+  const targetLineDataset = {
+    label: 'Target',
     data: data.map((monthData) => {
-      const crewData = monthData.families.find(c => c.family === family);
-      return crewData ? crewData.target : 0;
+      // Calculate the average target for all families in each month
+      const totalTarget = monthData.families.reduce((acc, curr) => acc + curr.target, 0);
+      return totalTarget / monthData.families.length;
     }),
-    borderColor: getCrewColor(family, crewIndex),
+    borderColor: 'black',
     borderWidth: 2,
-    pointBackgroundColor: getCrewColor(family, crewIndex),
+    pointBackgroundColor: 'black',
     fill: false,
     tension: 0.4,
-    order: 2
-  }));
+    yAxisID: 'y',
+    type: 'line',
+    order: 1,
+  };
 
   const chartData = {
-    labels: data.map((m) => m.month),
-    datasets: [...barDatasets, ...lineDatasets]
+    labels: data.map((monthData) => monthData.month),
+    datasets: [...datasets, targetLineDataset]
   };
 
   const options = {
@@ -120,7 +120,7 @@ const StackedBarCharts = ({ data }) => {
     },
   };
 
-  return <Bar data={chartData} options={options} />;
+  return <Chart type='bar' data={chartData} options={options} />;
 };
 
 export default StackedBarCharts;
