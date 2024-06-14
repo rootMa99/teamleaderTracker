@@ -11,7 +11,7 @@ import StackedBarChart from "./components/home/StackedBarChart";
 import NavBar from "./components/ui/NavBar";
 import MapChart from "./components/home/MapChart.js";
 import StackedBarCharts from "./components/home/StackedBarCharts.js";
-import StbarChartD3 from "./components/home/StbarChartD3.js";
+// import StbarChartD3 from "./components/home/StbarChartD3.js";
 
 
 //datasets: data.flatMap((m, monthIndex) =>
